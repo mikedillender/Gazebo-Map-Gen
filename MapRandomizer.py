@@ -57,12 +57,16 @@ def createObjects():
                     map1[x][y]=0
             else:
                 if (co != None):
-                    if (co.w == 1 and co.h == 1 and not isIsolated(co.x, co.y)):
+                    if (co.w == 1 and co.h == 1):# and not isIsolated(co.x, co.y)):
                         map1[co.x][co.y]=1
                         co = None
                     else:
                         rows.append(co)
                         co = None
+        if (co != None and not(co.w==1 and co.h==1)):
+            rows.append(co)
+            #co = None
+
     for y in range(msize):
         co=None
         for x in range(msize):
@@ -73,11 +77,14 @@ def createObjects():
                     co=Object(x,y,1,1)
             else:
                 if(co!=None):
-                    if(co.w==1 and co.h==1 and not isIsolated(co.x,co.y)):
-                        co=None
-                    else:
-                        rows.append(co)
-                        co=None
+                    #if(co.w==1 and co.h==1 and not isIsolated(co.x,co.y)):
+                    #    co=None
+                    #else:
+                    rows.append(co)
+                    co=None
+        if(co!=None):
+            rows.append(co)
+            #co = None
     for row in rows:
         print(row.getString())
     objects=rows
