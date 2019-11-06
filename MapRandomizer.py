@@ -89,7 +89,45 @@ def createObjects():
             #co = None
     for row in rows:
         print(row.getString())
+
     objects=rows
+
+    combine=[]
+    for o in objects:
+        ind=objects.index(o)
+        for i1 in range(len(objects)):
+            if(i1==ind):continue
+            o2=objects[i1]
+            for d in range(4):
+                if(o.x+getXinDir(d)==o2.x and o.y+getYinDir(d)==o2.y):
+                    if(d%2==0):
+                        if(o2.h==o.h):
+                            combine.append([o,o2])
+                    else:
+                        if(o2.w==o.w):
+                            combine.append([o,o2])
+    print("combine: ")
+    for os in combine:
+        for o in os:
+            if(objects.__contains__(o)):
+                objects.remove(o)
+        print("c { "+os[0].getString()+", "+os[1].getString())
+
+    added=[]
+    obs1=[]
+    for c in combine:
+        if(added.__contains__(c[1]) or added.__contains__(c[0])):continue
+        small=c[0] if (c[0].x<c[1].x or c[0].y<c[1].y) else c[1]
+        if(c[0].x!=c[1].x):
+            small.w=small.w+1
+        else:
+            small.h=small.h+1
+        obs1.append(small)
+        added.append(c[0])
+        added.append(c[1])
+
+
+
 
 def create(size):
     globals()
