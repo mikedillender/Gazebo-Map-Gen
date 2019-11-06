@@ -69,9 +69,9 @@ else:
         p4=p4+getP4((o.x+xoff)*bsize,(o.y+yoff)*bsize,i1,o.w*bsize,o.h*bsize,bsize)
         i1=i1+1
 
-p1=open("/home/racecar/racecar-ws/src/racecar-simulator/racecar_gazebo/worlds/gen/p1.world","r")
-p3=open("/home/racecar/racecar-ws/src/racecar-simulator/racecar_gazebo/worlds/gen/p2.world","r")
-p5=open("/home/racecar/racecar-ws/src/racecar-simulator/racecar_gazebo/worlds/gen/p3.world","r")
+p1=open("/home/racecar/PycharmProjects/Gazebo-Map-Gen/gen/p1.world","r")
+p3=open("/home/racecar/PycharmProjects/Gazebo-Map-Gen/gen/p2.world","r")
+p5=open("/home/racecar/PycharmProjects/Gazebo-Map-Gen/gen/p3.world","r")
 
 s=p1.read()+p2+p3.read()+p4+p5.read()
 #print(s)

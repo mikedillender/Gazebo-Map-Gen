@@ -65,6 +65,8 @@ def createObjects():
                         co = None
         if (co != None and not(co.w==1 and co.h==1)):
             rows.append(co)
+        elif (co!=None):
+            map1[co.x][co.y] = 1
             #co = None
 
     for y in range(msize):
