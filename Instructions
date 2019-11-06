@@ -1,0 +1,11 @@
+
+
+- - - HOW TO USE - - -
+
+1 - RUN MAIN
+2 - MOVE "racecar.launch" FILE TO "/home/racecar/racecar-ws/src/racecar-simulator/racecar_gazebo/launch"
+3 - ENTER THE FOLLOWING COMMAND INTO CONSOLE : "roslaunch racecar_gazebo racecar_gen.launch"
+4 - ENJOY :)
+
+CREATED BY GITHUB.COM/MIKEDILLENDER
+
