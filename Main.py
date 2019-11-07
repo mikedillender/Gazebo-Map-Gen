@@ -32,7 +32,7 @@ def getP2(x,y,n,w,l,h):
 size=20
 xoff=-(size-1)/2
 yoff=-(size-1)/2
-bsize=2
+bsize=4
 map=mr.create(size)
 boxes=[]
 for col in map:

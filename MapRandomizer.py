@@ -91,7 +91,10 @@ def createObjects():
         print(row.getString())
 
     objects=rows
+    combineObs()
 
+def combineObs():
+    global objects
     combine=[]
     for o in objects:
         ind=objects.index(o)
@@ -125,8 +128,61 @@ def createObjects():
         obs1.append(small)
         added.append(c[0])
         added.append(c[1])
+    for o in objects:
+        if (not obs1.__contains__(o)):
+            obs1.append(o)
+    objects=obs1
+    if(len(combine)>3):
+        print("again")
+        combineObs()
 
 
+def fill(x,y,liq):
+    globals()
+    #print(x,y)
+    liq[x][y]=1
+    for d in range(4):
+        x1=x+getXinDir(d)
+        y1=y+getYinDir(d)
+        if(x1<len(liq) and y1<len(liq) and x1>=0 and y1>=0 ):
+            if(liq[x1][y1]==0 and map[x1][y1]==0):
+                liq=fill(x1,y1,liq)
+        else:
+            return [[]]
+    return liq
+
+def fillRegions():
+    globals()
+    r=[3,msize-3]
+    for x in range(r[1]-r[0]):
+        for y in range(r[1]-r[0]):
+           # print(x, y, r[0],r[1])
+            if(map[int(x+r[0])][int(y+r[0])]==0):
+                tryFill(r[0]+x,r[0]+y,1,20)
+
+def tryFill(ox,oy,min,max):
+    globals()
+    liq=[]
+    for x in range(msize):
+        col=[]
+        for y in range(msize):
+            col.append(0)
+        liq.append(col)
+    liq=fill(ox,oy,liq)
+    list=[]
+    ix=0
+    for x in liq:
+        iy=0
+        for y in x:
+            if (y==1):
+               list.append([ix,iy])
+            iy=iy+1
+        ix=ix+1
+    l=len(list)
+    if(l<max and l>=min):
+        for p in list:
+            map[int(p[0])][int(p[1])]=1
+    print("fill size = "+str(len(list))+" for "+str(ox)+", "+str(oy))
 
 
 def create(size):
@@ -157,6 +213,7 @@ def create(size):
         if (orient > 3): orient = 0
 
     removeSurrounding()
+    fillRegions()
     #createObjects()
     return map
 
