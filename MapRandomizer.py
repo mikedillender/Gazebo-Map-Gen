@@ -102,7 +102,7 @@ def combineObs():
             if(i1==ind):continue
             o2=objects[i1]
             for d in range(4):
-                if(o.x+getXinDir(d)==o2.x and o.y+getYinDir(d)==o2.y):
+                if(o.x+getXinDir(d,o.w)==o2.x and o.y+getYinDir(d,o.h)==o2.y):
                     if(d%2==0):
                         if(o2.h==o.h):
                             combine.append([o,o2])
@@ -217,12 +217,12 @@ def create(size):
     #createObjects()
     return map
 
-def getXinDir(d):
+def getXinDir(d,r=1):
     if(d%2==0):return 0
-    return 1 if d==1 else -1
-def getYinDir(d):
+    return r if d==1 else -r
+def getYinDir(d,r=1):
     if(d%2==1):return 0
-    return 1 if d==2 else -1
+    return r if d==2 else -r
 
 def move(dir,dist):
     global cx,cy,msize
