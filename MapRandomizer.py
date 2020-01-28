@@ -189,6 +189,8 @@ def create(size):
     globals()
     global msize
     msize=size
+    cx = msize / 2
+    cy = msize / 2
     for x in range(msize):
         col = []
         for y in range(msize):
@@ -199,7 +201,7 @@ def create(size):
             col.append((1 if fill else 0))
         map.append(col)
 
-    cr = int(msize / 10.0)
+    cr = 2
     for xi in range(2 * cr):
         for yi in range(2 * cr):
             map[int(cx - cr + xi)][int(cy - cr + yi)] = 0
