@@ -184,7 +184,6 @@ def tryFill(ox,oy,min,max):
             map[int(p[0])][int(p[1])]=1
     print("fill size = "+str(len(list))+" for "+str(ox)+", "+str(oy))
 
-
 def create(size):
     globals()
     global msize
