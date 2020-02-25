@@ -91,7 +91,30 @@ def createObjects():
         print(row.getString())
 
     objects=rows
+    checkObjects()
+
     combineObs()
+    checkObjects()
+
+def checkObjects():
+    global objects;
+    map2=[]
+    for x in range(msize):
+        col = []
+        for y in range(msize):
+            col.append(0)
+        map2.append(col)
+    for o in objects:
+        for x1 in range(o.w):
+            for y1 in range(o.h):
+                map2[o.x + x1][o.y + y1]=1
+
+    for col in map2:
+        cs = ""
+        for val in col:
+            cs = cs + ("X" if val == 1 else " ") + " "
+        print(cs)
+
 
 def combineObs():
     global objects
@@ -217,6 +240,7 @@ def create(size):
     fillRegions()
     #createObjects()
     return map
+
 
 def getXinDir(d,r=1):
     if(d%2==0):return 0
