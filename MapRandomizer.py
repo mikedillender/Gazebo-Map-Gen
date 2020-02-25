@@ -249,7 +249,7 @@ def create(size):
     removeSurrounding()
     fillRegions()
     if(map[int(cx)][int(cy)]!=0):
-        create(size)
+        create(size)#recalls
     #createObjects()
     return map
 
