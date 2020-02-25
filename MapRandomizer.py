@@ -94,7 +94,7 @@ def createObjects():
     checkObjects()
 
     combineObs()
-    checkObjects()
+    #checkObjects()
 
 def checkObjects():
     global objects;
@@ -104,15 +104,24 @@ def checkObjects():
         for y in range(msize):
             col.append(0)
         map2.append(col)
+    onum=48
     for o in objects:
         for x1 in range(o.w):
             for y1 in range(o.h):
-                map2[o.x + x1][o.y + y1]=1
+                #map2[o.x + x1][o.y + y1]=1 if map2[o.x + x1][o.y + y1]==0 else map2[o.x + x1][o.y + y1]+1
+                map2[o.x + x1][o.y + y1]=onum
+        onum = onum + 1
+        if onum == 58:
+            onum = 65
+        elif onum == 91:
+            onum = 97
 
     for col in map2:
         cs = ""
         for val in col:
-            cs = cs + ("X" if val == 1 else " ") + " "
+            #cs = cs + ("X" if val == 1 else (" " if val==0 else "O")) + " "
+            cs = cs + (chr(val) if val != 0 else " ") + " "
+
         print(cs)
 
 
@@ -155,6 +164,7 @@ def combineObs():
         if (not obs1.__contains__(o)):
             obs1.append(o)
     objects=obs1
+    checkObjects()
     if(len(combine)>3):
         print("again")
         combineObs()
@@ -238,6 +248,8 @@ def create(size):
 
     removeSurrounding()
     fillRegions()
+    if(map[int(cx)][int(cy)]!=0):
+        create(size)
     #createObjects()
     return map
 
