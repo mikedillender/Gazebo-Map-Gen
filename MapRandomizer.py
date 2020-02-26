@@ -142,26 +142,27 @@ def combineObs():
                         if(o2.w==o.w):
                             combine.append([o,o2])
     #print("combine: ")
-    for os in combine:
+    '''for os in combine:
         for o in os:
             if(objects.__contains__(o)):
                 objects.remove(o)
-        print("c { "+os[0].getString()+", "+os[1].getString())
+        print("c { "+os[0].getString()+", "+os[1].getString())'''
 
     added=[]
     obs1=[]
     for c in combine:
         if(added.__contains__(c[1]) or added.__contains__(c[0])):continue
         small=c[0] if (c[0].x<c[1].x or c[0].y<c[1].y) else c[1]
-        if(c[0].h!=c[1].h):
-            small.w=small.w+1
+        lg=c[1] if small==c[0] else c[0]
+        if(c[0].x!=c[1].x):
+            small.w=small.w+lg.w
         else:
-            small.h=small.h+1
+            small.h=small.h+lg.h
         obs1.append(small)
         added.append(c[0])
         added.append(c[1])
     for o in objects:
-        if (not obs1.__contains__(o)):
+        if ((not obs1.__contains__(o)) and (not added.__contains__(o))):
             obs1.append(o)
     objects=obs1
     checkObjects()
