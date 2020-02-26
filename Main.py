@@ -64,7 +64,7 @@ if(not compress):
 else:
     i1=0
     for o in obj:
-        print(str(i1)+" - "+o.getString())
+        #print(str(i1)+" - "+o.getString())
         p2=p2+getP2((o.x+xoff)*bsize,(o.y+yoff)*bsize,i1,o.w*bsize,o.h*bsize,bsize)
         p4=p4+getP4((o.x+xoff)*bsize,(o.y+yoff)*bsize,i1,o.w*bsize,o.h*bsize,bsize)
         i1=i1+1

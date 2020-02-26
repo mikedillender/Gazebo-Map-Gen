@@ -141,7 +141,7 @@ def combineObs():
                     else:
                         if(o2.w==o.w):
                             combine.append([o,o2])
-    print("combine: ")
+    #print("combine: ")
     for os in combine:
         for o in os:
             if(objects.__contains__(o)):
@@ -153,7 +153,7 @@ def combineObs():
     for c in combine:
         if(added.__contains__(c[1]) or added.__contains__(c[0])):continue
         small=c[0] if (c[0].x<c[1].x or c[0].y<c[1].y) else c[1]
-        if(c[0].x!=c[1].x):
+        if(c[0].h!=c[1].h):
             small.w=small.w+1
         else:
             small.h=small.h+1
@@ -168,6 +168,8 @@ def combineObs():
     if(len(combine)>3):
         print("again")
         combineObs()
+
+
 
 
 def fill(x,y,liq):
