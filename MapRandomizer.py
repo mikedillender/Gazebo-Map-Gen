@@ -190,11 +190,13 @@ def fill(x,y,liq):
 def fillRegions():
     globals()
     r=[3,msize-3]
+    maxsize=msize*msize*(.25*.25)
+    print("fillsize="+str(maxsize))
     for x in range(r[1]-r[0]):
         for y in range(r[1]-r[0]):
            # print(x, y, r[0],r[1])
             if(map[int(x+r[0])][int(y+r[0])]==0):
-                tryFill(r[0]+x,r[0]+y,1,20)
+                tryFill(r[0]+x,r[0]+y,1,maxsize)
 
 def tryFill(ox,oy,min,max):
     globals()
